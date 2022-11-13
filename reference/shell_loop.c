@@ -22,7 +22,7 @@ void find_cmd(info_t *info)
 	if (!k)
 		return;
 
-	path = find_path(info, shell_getenv(info, "PATH="), info->argv[0]);
+	path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
 	if (path)
 	{
 		info->path = path;
@@ -30,7 +30,7 @@ void find_cmd(info_t *info)
 	}
 	else
 	{
-		if ((interactive(info) || shell_getenv(info, "PATH=")
+		if ((interactive(info) || _getenv(info, "PATH=")
 			|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 			fork_cmd(info);
 		else if (*(info->arg) != '\n')
@@ -135,14 +135,14 @@ int find_builtin(info_t *info)
 {
 	int i, built_in_ret = -1;
 	builtin_table builtintbl[] = {
-		{"exit", shell_exit},
-		{"env", shell_env},
-		{"help", shell_help},
-		{"history", shell_history},
-		{"setenv", shell_setenv},
+		{"exit", _myexit},
+		{"env", _myenv},
+		{"help", _myhelp},
+		{"history", _myhistory},
+		{"setenv", _mysetenv},
 		{"unsetenv", _myunsetenv},
-		{"cd", shell_cd},
-		{"alias", shell_alias},
+		{"cd", _mycd},
+		{"alias", _myalias},
 		{NULL, NULL}
 	};
 

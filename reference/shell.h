@@ -183,12 +183,12 @@ int print_d(int, int);
 char *convert_number(long int, int, int);
 void remove_comments(char *);
 
-int shell_cd(info_t *);
-int shell_exit(info_t *);
-int shell_help(info_t *);
+int _myexit(info_t *);
+int _mycd(info_t *);
+int _myhelp(info_t *);
 
-int shell_history(info_t *);
-int shell_alias(info_t *);
+int _myhistory(info_t *);
+int _myalias(info_t *);
 
 ssize_t get_input(info_t *);
 int _getline(info_t *, char **, size_t *);
@@ -198,9 +198,9 @@ void clear_info(info_t *);
 void set_info(info_t *, char **);
 void free_info(info_t *, int);
 
-char *shell_getenv(info_t *, const char *);
-int shell_env(info_t *);
-int shell_setenv(info_t *);
+char *_getenv(info_t *, const char *);
+int _myenv(info_t *);
+int _mysetenv(info_t *);
 int _myunsetenv(info_t *);
 int populate_env_list(info_t *);
 
